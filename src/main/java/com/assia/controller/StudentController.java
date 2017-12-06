@@ -1,6 +1,7 @@
 package com.assia.controller;
 
 import com.assia.domain.Student;
+import com.assia.model.student.StudentModel;
 import com.assia.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +16,7 @@ public class StudentController {
     private StudentService studentService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Student> getAll(){
+    public List<StudentModel> getAll(){
         return this.studentService.getAll();
     }
 }

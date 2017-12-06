@@ -1,5 +1,6 @@
 package com.assia.domain;
 
+import com.assia.model.subject.SubjectModel;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -17,4 +18,11 @@ public class Subject {
     @ManyToOne
     @JoinColumn(name = "idStudent")
     private Student student;
+
+    public SubjectModel toSubjectModel(){
+        SubjectModel rs = new SubjectModel();
+        rs.setId(id);
+        rs.setName(name);
+        return rs;
+    }
 }
