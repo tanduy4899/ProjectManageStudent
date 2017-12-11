@@ -1,8 +1,10 @@
 package com.assia.domain;
 
 import com.assia.model.student.StudentModel;
+import com.assia.model.subject.SubjectForm;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.springframework.util.CollectionUtils;
 
 import javax.persistence.*;
 import java.math.BigInteger;
@@ -31,5 +33,17 @@ public class Student {
         rs.setCourse(course);
         rs.setSubjectModels(getSubjects().stream().map(Subject::toSubjectModel).collect(Collectors.toList()));
         return rs;
+    }
+
+    public void setListSubjectForm(List<SubjectForm> listSubjectForm){
+        subjects.clear();
+        if(!CollectionUtils.isEmpty(listSubjectForm)){
+            for(int i =0;i<listSubjectForm.size();i++){
+                SubjectForm subjectForm = listSubjectForm.get(i);
+                Subject subject = new Subject();
+                subject.setName(subjectForm.getName());
+                subjects.add(subject);
+            }
+        }
     }
 }

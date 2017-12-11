@@ -46,4 +46,8 @@ public class StudentService{
         student.setCourse(studentForm.getCourse());
         return this.studentRepository.save(student);
     }
+
+    public void delete(BigInteger id){
+        this.getById(id).ifPresent(studentRepository::delete);
+    }
 }
